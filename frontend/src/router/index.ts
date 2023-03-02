@@ -10,8 +10,8 @@ const router = createRouter({
       component: LandingPage,
     },
     {
-      path: "/details/:user_id",
-      name: "user-detail",
+      path: "/details/:email",
+      name: "user-details",
       component: () => import("@/views/users/details/Index.vue"),
       props: true,
     },

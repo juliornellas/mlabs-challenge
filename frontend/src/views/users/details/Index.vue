@@ -1,3 +1,3 @@
 <template>
-  <div>User detail weather</div>
+  <div>User detail weather {{ $route.params }}</div>
 </template>
