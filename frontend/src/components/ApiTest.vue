@@ -24,9 +24,9 @@ export default {
 
     <div v-else>
       The api responded with: <br />
-      <code>
+      <pre>
         {{ apiResponse }}
-      </code>
+      </pre>
     </div>
   </div>
 </template>

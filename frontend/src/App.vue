@@ -3,6 +3,7 @@ import { RouterLink, RouterView } from "vue-router";
 </script>
 
 <template>
+  <h1 class="text-5xl underline text-red">MenuLabs Challenge</h1>
   <header>
     <div class="wrapper">
       <nav>
@@ -13,6 +14,4 @@ import { RouterLink, RouterView } from "vue-router";
   <RouterView />
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>
