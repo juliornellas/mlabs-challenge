@@ -25,7 +25,6 @@ export const useUsersStore = defineStore("users", () => {
     let u = `${url}get-user-weather/${email}/${latitude}/${longitude}`;
     const apiResponse = await fetch(u);
     const res = await apiResponse.json();
-    console.log("Get from CACHE", res.user);
     user.value = res.user;
   }
 
