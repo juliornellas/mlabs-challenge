@@ -14,7 +14,7 @@ class UserController extends Controller
     public function index(){
         GetUsersWeatherJob::dispatch();
 
-        $expiration = 60;
+        $expiration = 60 * 60;
         $key = 'weather';
         return Cache::store('redis')->remember($key, $expiration, function(){
             return response()->json([
@@ -27,7 +27,7 @@ class UserController extends Controller
 
     public function getUserWeatherInCache($email, $latitude, $longitude){
 
-        $expiration = 60;
+        $expiration = 60 * 60;
         $identifier = `weather-$email`;
 
         $client = new Client();

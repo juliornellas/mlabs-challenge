@@ -31,7 +31,7 @@ class GetUsersWeatherJob implements ShouldQueue
     {
         foreach (User::all() as $user) {
 
-            $expiration = 60;
+            $expiration = 60 * 60;
             $identifier = `weather-$user->email`;
 
             $client = new Client();
