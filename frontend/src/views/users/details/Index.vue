@@ -22,18 +22,25 @@ export default {
 
       return `${day}/${month}/${year} - UTC: ${utc}`;
     });
-    const sunrise = computed(() => {
-      return new Date(weather.value.sys.sunrise * 1000)
-        .toTimeString()
-        .split(" ")[0];
-    });
-    const sunset = computed(() => {
-      return new Date(weather.value.sys.sunset * 1000)
-        .toTimeString()
-        .split(" ")[0];
-    });
+    const sunrise = computed(
+      () =>
+        new Date(weather.value.sys.sunrise * 1000).toTimeString().split(" ")[0]
+    );
+    const sunset = computed(
+      () =>
+        new Date(weather.value.sys.sunset * 1000).toTimeString().split(" ")[0]
+    );
+    const icon = computed(
+      () =>
+        `http://openweathermap.org/img/wn/${weather.value.weather[0].icon}@4x.png`
+    );
+    const iconDescriprion = computed(
+      () => weather.value.weather[0].description
+    );
 
     return {
+      icon,
+      iconDescriprion,
       name,
       email,
       date,
@@ -59,10 +66,7 @@ export default {
       <div class="flex justify-around">
         <div class="mt-4">
           <p class="text-slate-900 dark:text-slate-200">Date {{ date }}</p>
-          <img
-            :src="`http://openweathermap.org/img/wn/${weather.weather[0].icon}@4x.png`"
-            :alt="weather.weather[0].description"
-          />
+          <img :src="icon" :alt="iconDescriprion" />
           <p class="pb-6 font-bold text-indigo-800 dark:text-indigo-200">
             {{ weather.weather[0].main }}
           </p>
