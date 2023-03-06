@@ -5,7 +5,7 @@ import { RouterLink, RouterView } from "vue-router";
 <template>
   <div class="px-9 py-4">
     <header class="pb-4">
-      <div class="text-center text-h6">Challenge</div>
+      <div class="text-center text-2xl">MenuLabs Challenge</div>
       <nav>
         <RouterLink to="/">Home</RouterLink>
       </nav>

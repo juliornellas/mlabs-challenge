@@ -1,3 +1,13 @@
+<script lang="ts">
+export default {
+  props: {
+    users: {
+      type: Array,
+      required: true,
+    },
+  },
+};
+</script>
 <template>
   <table
     class="border-collapse border border-slate-400 w-full dark:border-slate-500 bg-white dark:bg-slate-800 text-sm shadow-sm"
@@ -28,7 +38,8 @@
     </thead>
     <tbody>
       <tr
-        v-for="{ id, name, email, _, latitude, longitude } in users"
+        class="hover:bg-slate-100"
+        v-for="{ id, name, email, emailVerified, latitude, longitude } in users"
         :key="email"
       >
         <td
@@ -37,7 +48,7 @@
           <RouterLink
             :to="{
               name: 'user-details',
-              params: { email },
+              params: { name, email, latitude, longitude },
             }"
           >
             {{ name }}
@@ -61,16 +72,4 @@
       </tr>
     </tbody>
   </table>
-  <!-- <UserDetail></UserDetail> -->
 </template>
-<script>
-export default {
-  props: {
-    users: {
-      type: Array,
-      required: true,
-    },
-  },
-};
-// import UserDetail from "@/components/Users/UserDetail.vue";
-</script>

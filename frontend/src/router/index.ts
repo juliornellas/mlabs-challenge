@@ -10,7 +10,7 @@ const router = createRouter({
       component: LandingPage,
     },
     {
-      path: "/details/:email",
+      path: "/details/:name/:email/:latitude/:longitude",
       name: "user-details",
       component: () => import("@/views/users/details/Index.vue"),
       props: true,

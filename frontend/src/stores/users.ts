@@ -1,20 +1,37 @@
 import { defineStore } from "pinia";
-import { computed, reactive, ref } from "vue";
+import { computed, ref } from "vue";
 
 export const useUsersStore = defineStore("users", () => {
-  const data = ref([]);
-  const users = computed(() => data);
+  //State
+  const users = ref([]);
+  const user = ref([]);
 
-  async function getUsers() {
-    const url = "http://localhost:8001/";
+  //Getters
+  const usersWeather = computed(() => users);
+  const userWeather = computed(() => user);
+
+  const url = "http://localhost:8000/";
+  (async function getUsers() {
     const apiResponse = await fetch(url);
     const res = await apiResponse.json();
-    data.value = res.users;
+    users.value = res.users;
+  })();
+
+  async function getWeather(
+    email: string,
+    latitude: string,
+    longitude: string
+  ) {
+    let u = `${url}get-user-weather/${email}/${latitude}/${longitude}`;
+    const apiResponse = await fetch(u);
+    const res = await apiResponse.json();
+    console.log("Get from CACHE", res.user);
+    user.value = res.user;
   }
 
-  getUsers();
-
   return {
-    users,
+    userWeather,
+    usersWeather,
+    getWeather,
   };
 });

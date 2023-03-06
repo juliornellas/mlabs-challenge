@@ -1,6 +1,3 @@
-<template>
-  <UsersTable :users="users"></UsersTable>
-</template>
 <script>
 import UsersTable from "@/components/UsersTable.vue";
 import { useUsersStore } from "@/stores/users";
@@ -11,9 +8,9 @@ export default {
   },
 
   setup() {
-    const data = useUsersStore();
+    const store = useUsersStore();
 
-    const users = data.users;
+    const users = store.usersWeather;
 
     return {
       users,
@@ -21,3 +18,6 @@ export default {
   },
 };
 </script>
+<template>
+  <UsersTable :users="users"></UsersTable>
+</template>
